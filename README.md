@@ -7,7 +7,7 @@ All single cell data in this paper was submitted with the scripts.
 # Citation
 Our paper has been published on the [Blood](https://ashpublications.org/blood) PMID [31914172](https://ashpublications.org/blood/article-abstract/doi/10.1182/blood.2019003886/430074/Nivolumab-treatment-for-relapsed-refractory?redirectedFrom=fulltext)
 
-You could read our paper [here](README.assets/Liu-2020-Nivolumab-treatment-of-relapsed-ref.pdf), and all the supplemental materials are in [here]()
+You could read our paper [here](README.assets/Liu-2020-Nivolumab-treatment-of-relapsed-ref.pdf), and all the supplemental materials are in [here](blood_publish/)
 
 You could downloaded raw data from [GEO Database GSE138504](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138504) 
 
