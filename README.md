@@ -15,8 +15,6 @@ You could downloaded raw data from [GEO Database GSE138504](https://www.ncbi.nlm
 
 Single cell RNA sequencing (scRNA-seq) was performed with peripheral blood cells before (Day 0, T0), during nivolumab treatment (Day 7, T1; Day 21, T2), and when plasma EBV turned negative (Day 76, T3) in 1 patient (patient 7). scRNA-seq libraries were generated following the recommended protocol of the 3’ scRNA-seq 10X genomics platform and using v2 chemistry, and sequenced data was collected by illumina NovaSeq 6000 sequencing.
 
----
-
 ## The version 2. Basic analysis of all merge data of HLH
 
 To better visualize our data, we had modified a lot of functions from `Seurat`. If you want to used them, you need to loading them into your R environment.
@@ -37,10 +35,10 @@ Then, you could begin the data analyze from following codes.
    Then, you could use following codes to make the visualization. 
 
 ~~~R
-HLH_T1 <- readRDS("/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/accumlate_all/anno_HLH_T1.rds")
-HLH_T2 <- readRDS("/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/accumlate_all/anno_HLH_T2.rds")
-HLH_T3 <- readRDS("/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/accumlate_all/anno_HLH_T3.rds")
-HLH_T4 <- readRDS("/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/accumlate_all/anno_HLH_T4.rds")
+HLH_T1 <- readRDS("./processed_data/anno_HLH_T1.rds")
+HLH_T2 <- readRDS("./processed_data/anno_HLH_T2.rds")
+HLH_T3 <- readRDS("./processed_data/anno_HLH_T3.rds")
+HLH_T4 <- readRDS("./processed_data/anno_HLH_T4.rds")
 p1 <- DimPlot(object = HLH_T1, reduction = "tsne", label = TRUE,repel=T) +NoLegend()+labs(title="State 1")
 p2 <- DimPlot(object = HLH_T2, reduction = "tsne", label = TRUE,repel=T) +NoLegend()+labs(title="State 2")
 p3 <- DimPlot(object = HLH_T3, reduction = "tsne", label = TRUE,repel=T) +NoLegend()+labs(title="State 3")
@@ -79,13 +77,13 @@ all_merge <- all_merge %>%
 all_merge <- XY_RunURD_DM(all_merge,assay = "RNA",key = "URDDM",sigma=15,visua_group="group")
 all_merge <- DooptSNE(all_merge, reduction_use = "pca", reduction_save = "optsne",dims_use = 1:15)
 all_merge <- DoForceAtlas2(all_merge, reduction_use = "pca", reduction_save = "fa2",dims_use = 1:15)
-mcsaveRDS(all_merge,"/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/20200624_seurat/all_merge.rds",mc.cores=20)
+mcsaveRDS(all_merge,"./all/all_merge.rds",mc.cores=20)
 ~~~
 
 *And  the `.rds` files could be accessed from `./rds_files/all_merge.rds`*
 
 ~~~R
-all_merge <- readRDS("/mnt/data/user_data/xiangyu/workshop/scRNA/human_pengpeng/result/20200624_seurat/all_merge.rds")
+all_merge <- readRDS("./all/all_merge.rds")
 DimPlot(object = all_merge, reduction = "pca",label=FALSE,repel=TRUE,group.by="new_anno")+labs(title="pca")
 ~~~
 
